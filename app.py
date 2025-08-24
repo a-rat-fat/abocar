@@ -5,7 +5,15 @@ from models import db, init_db, Client, Vehicle, Subscription, RequestDemande, T
 import requests as pyrequests
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data/app.db"
+
+# --- Database (SQLite by default, override with DATABASE_URL) ---
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_DIR = os.environ.get("DB_DIR", os.path.join(BASE_DIR, "data"))
+os.makedirs(DB_DIR, exist_ok=True)  # ensure folder exists on Railway/Nixpacks
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
+    "DATABASE_URL",
+    f"sqlite:///{os.path.join(DB_DIR, 'app.db')}"
+)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
@@ -129,7 +137,6 @@ def api_communes():
     if len(q) < 2: return jsonify(ok=True, data=[])
     key = q.lower()
     cached = CommuneCache.query.filter_by(q=key).first()
-    import time
     if cached and (time.time() - cached.ts) < 86400:
         try: return jsonify(ok=True, data=json.loads(cached.payload))
         except Exception: pass
