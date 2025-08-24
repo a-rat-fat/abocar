@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Maintenance (révisions / pneus / CT)</h2>
+<form id="form-maint" class="card">
+  <div class="grid">
+    <label>Véhicule ID
+      <input name="vehicule_id" required placeholder="id du véhicule">
+    </label>
+    <label>Type
+      <select name="type">
+        <option>REVISION</option>
+        <option>PNEUS</option>
+        <option>CONTROLE_TECHNIQUE</option>
+      </select>
+    </label>
+    <label>Date planifiée
+      <input type="date" name="date_planifiee">
+    </label>
+    <label>KM planifié
+      <input type="number" name="km_planifie">
+    </label>
+    <label>Prestataire
+      <input name="prestataire" placeholder="Norauto / Renault...">
+    </label>
+    <label>Coût (option)
+      <input type="number" name="cout" step="0.01">
+    </label>
+  </div>
+  <label>Notes
+    <textarea name="notes" rows="2"></textarea>
+  </label>
+  <button type="submit">Planifier</button>
+  <span id="maint-result" class="muted"></span>
+</form>
+
+<div class="toolbar">
+  <button id="btn-refresh-maint">Rafraîchir la liste</button>
+</div>
+<table id="table-maint">
+  <thead>
+    <tr>
+      <th>Véhicule</th><th>Type</th><th>Date/KM</th><th>Prestataire</th><th>Statut</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+{% endblock %}

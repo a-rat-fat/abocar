@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Turismo – Parc & Planification</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><a href="/">Turismo – Parc & Planification</a></div>
+  <nav class="tabs">
+    <a href="/demandes">Demandes</a>
+    <a href="/puits">Puits</a>
+    <a href="/parc">Parc</a>
+    <a href="/transports">Transports</a>
+    <a href="/maintenance">Maintenance</a>
+  </nav>
+</header>
+<main class="container">
+  {% block content %}{% endblock %}
+</main>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+# nixpacks.toml — Optional fine-tuning for Nixpacks (not required for this app)
+[start]
+cmd = "gunicorn app:app --bind 0.0.0.0:$PORT"

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Puits de demandes</h2>
+<div class="toolbar">
+  <button id="btn-refresh-puit">Rafraîchir</button>
+</div>
+<table id="table-puit">
+  <thead>
+    <tr>
+      <th>Créé le</th><th>Par</th><th>Type</th><th>Client</th>
+      <th>Départ</th><th>Arrivée</th><th>Date</th><th>Notes</th><th>Action</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+{% endblock %}

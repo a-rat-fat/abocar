@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Nouvelle demande</h2>
+<form id="form-demande" class="card">
+  <div class="grid">
+    <label>Type
+      <select name="type" required>
+        <option value="NEW_SUBSCRIPTION">Nouvelle souscription</option>
+        <option value="VEHICLE_SWAP">Échange de véhicule</option>
+        <option value="EXTENSION">Extension</option>
+        <option value="EARLY_END">Fin anticipée</option>
+        <option value="MAINTENANCE">Maintenance</option>
+        <option value="TRANSPORT">Transport</option>
+      </select>
+    </label>
+    <label>Client (ID ou nom libre)
+      <input name="client_id" placeholder="ex: CLT-001 ou 'Nouveau Client'">
+    </label>
+    <label>Ville départ
+      <input name="ville_depart" id="ville_depart" placeholder="Paris" autocomplete="off">
+      <small>Auto-complétion (Communes)</small>
+    </label>
+    <label>CP départ
+      <input name="cp_depart" placeholder="75001">
+    </label>
+    <label>Ville arrivée
+      <input name="ville_arrivee" id="ville_arrivee" placeholder="Lyon" autocomplete="off">
+    </label>
+    <label>CP arrivée
+      <input name="cp_arrivee" placeholder="69002">
+    </label>
+    <label>Date souhaitée
+      <input type="date" name="date_souhaitee">
+    </label>
+    <label>Date fin (option)
+      <input type="date" name="date_fin">
+    </label>
+    <label>Préférence véhicule (segment)
+      <input name="vehicule_pref" placeholder="citadine / SUV / VP…">
+    </label>
+  </div>
+  <label>Notes
+    <textarea name="notes" rows="3" placeholder="Précisions client…"></textarea>
+  </label>
+  <button type="submit">Enregistrer au Puits</button>
+  <span id="demande-result" class="muted"></span>
+</form>
+{% endblock %}

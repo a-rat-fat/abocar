@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Parc & Abonnements</h2>
+<div class="toolbar">
+  <button id="btn-refresh-parc">Rafraîchir</button>
+</div>
+<table id="table-parc">
+  <thead>
+    <tr>
+      <th>Immat</th><th>Marque</th><th>Modèle</th><th>KM</th><th>Statut</th>
+      <th>Client actuel</th><th>Prochain client</th><th>Date transfert</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+{% endblock %}
